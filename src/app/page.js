@@ -1,65 +1,60 @@
+'use client'
+
 import Image from "next/image";
+import {IndicatorButton, PrimaryButton} from "@/buttons/BasicButtons";
+import {FilesIcon, MessagesIcon} from "@/icons/icons";
+import {Breadcrumb, BreadcrumbItem} from "@/other/Breadcrumb";
+import {
+  InputTypeBox,
+  PinInputMode,
+  RadioTypeBox,
+  RangeTypeBox, SearchBox,
+  SliderItem,
+  SliderItem2
+} from "@/interactions/InputInteractions";
+import {SelectItem, SelectTypeBox} from "@/interactions/SelectInteractions";
+import {SearchableSelectFlow, SelectFlow, SelectFlowDivider, SelectFlowItem} from "@/interactions/menus/basic_menus";
+import {useState} from "react";
 
 export default function Home() {
+  const [selected, setSelected] = useState("flows");
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="p-2 bg-stone-50 overflow-auto w-screen flex justify-center gap-2 h-[2000px] text-stone-900">
+      <div className="gap-2 flex  flex-col w-1/4">
+        Welcome to Papaya UI Kit example
+        <IndicatorButton icon={<MessagesIcon/>} title="Messages"/>
+        <div className="flex w-1/2">
+          <IndicatorButton fullWidth indicator="9" icon={<MessagesIcon/>} title="Messages"/>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <Breadcrumb>
+          <BreadcrumbItem title="Flows" onClick={() => setSelected("flows")} active={selected === "flows"} icon={<FilesIcon/>}/>
+          <BreadcrumbItem title="Bits" icon={<FilesIcon/>}/>
+          <BreadcrumbItem title="Mobile" icon={<MessagesIcon/>}/>
+        </Breadcrumb>
+        <InputTypeBox type="text" placeholder="email@gmail.com" title="Email"/>
+        <InputTypeBox type="text" placeholder="email@gmail.com" error="Email is invalid" title="Email"/>
+        <RadioTypeBox title="Give us your soul! Please" id="miaw" value="miaw"/>
+        <SliderItem title="Give us your soul! Please" id="miaw" value="miaw"/>
+        <SelectTypeBox title="Select your country" defaultValue="eu">
+          <SelectItem text="Romania" value="ro"/>
+          <SelectItem text="Europe" value="eu" checked={true}/>
+          <SelectItem text="China" value="china"/>
+        </SelectTypeBox>
+        <RangeTypeBox text="Test" id="test" />
+        <PinInputMode title="test"/>
+        <div className="p-2 border border-stone-200 rounded-lg">
+          <SearchableSelectFlow onSelect={(p) => alert(p)}>
+            <SelectFlowDivider name="Basic"/>
+            <SelectFlowItem value="basic_1" title="Basic 1"/>
+            <SelectFlowItem value="basic_2" title="Basic 2"/>
+            <SelectFlowItem title="asdnu" value="miaw?" icon={<FilesIcon/>}/>
+            <SelectFlowDivider name="More"/>
+            <SelectFlowItem title="asdnu" icon={<MessagesIcon/>}/>
+            <SelectFlowDivider name="More"/>
+          </SearchableSelectFlow>
         </div>
-      </main>
-    </div>
+        <SearchBox/>
+      </div>
+    </main>
   );
 }
