@@ -9,7 +9,7 @@ export function SelectTypeBox({error, id, title, children, onChange, ...props}) 
       <select
         {...props}
         onChange={onChange}
-        className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-amber-400") + " appearance-none outline-none bg-stone-200 w-full rounded-lg py-2 px-3"}
+        className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-amber-400") + " rounded-full corner-squircle appearance-none outline-none bg-stone-200 w-full py-2 px-3"}
         id={id}>
         {children}
       </select>

@@ -8,7 +8,7 @@ export function InputTypeBox({id, type, title, placeholder, defaultText, error, 
         <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1" htmlFor={id}>
           {title}
         </label> : null}
-      <input {...props} className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " appearance-none outline-none bg-stone-200 w-full rounded-lg py-2 px-3"}
+      <input {...props} className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none bg-stone-200 w-full rounded-full corner-squircle py-2 px-3"}
              id={id} type={type ? type : "text"} placeholder={placeholder} defaultValue={defaultText}/>
       {error ?
         <p className="text-red text-xs italic mt-1 text-rose-600">{error}</p> : null}
@@ -25,7 +25,7 @@ export function RadioTypeBox({ id, title, value }) {
 
   return (
     <div
-      className={`w-full flex select-none items-center rounded`}
+      className={`w-full flex select-none justify-center items-center rounded`}
     >
       <input
         id={`${id}${value}`}
@@ -78,6 +78,7 @@ export function SliderSelector ({id, title, error, children}) {
 
 import { useRef } from "react";
 import {SearchIcon} from "@/icons/icons";
+import {Pami} from "../app/pami/page";
 
 export function SliderItem2({ id, text, parent, checked, onChange }) {
   const min = 0;
@@ -149,10 +150,10 @@ export function SliderItem({ id, text, parent, checked, onChange }) {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full mx-auto">
       <div className="relative mt-8">
         <div
-          className="absolute -top-9 -translate-x-1/2 flex flex-col items-center transition-[left] duration-75 ease-out"
+          className="absolute -top-9 -translate-x-1/2 flex flex-col items-center"
           style={{
             left: `calc(${percent}% + (${8 - percent * 0.16}px))`,
           }}

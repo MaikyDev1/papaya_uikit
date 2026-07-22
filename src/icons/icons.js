@@ -21,3 +21,32 @@ export function SearchIcon(props) {
     </svg>
   )
 }
+
+export function CloseIcon(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" {...props}  width="1em" height="1em" viewBox="0 0 24 24">
+      <path fill="currentColor" d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275t.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"></path>
+    </svg>
+  )
+}
+
+export function ArrowIcon(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" {...props}  width="1em" height="1em" viewBox="0 0 80 80">
+      <g fill="none">
+        <path fill="currentColor" d="M36.964 17.7a3 3 0 1 1 6 .004zm3 .078l3 .002zm0 .889l-3-.003zm0 .888l3 .002zm-.001.89l3 .001zm-.001.888l-3-.002zm0 .889h-3v-.002zm3 20.074a3 3 0 0 1-6 0zm-6 .037a3 3 0 0 1 6 0zm6 21.667a3 3 0 0 1-6 0zm.002-46.296v.075l-6-.003V17.7zm0 .075v.89l-6-.005v-.888zm0 .89v.888l-6-.004v-.889zm0 .888l-.001.89l-6-.005v-.889zm-.001.89l-.001.888l-6-.004v-.889zm-.001.888v.889l-6-.004v-.889zm0 .887v20.074h-6V22.222zm0 20.111V64h-6V42.333z"></path>
+        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={6} d="m15.11 39.11l21.177-21.176a5.25 5.25 0 0 1 7.425 0l21.176 21.177"></path>
+      </g>
+    </svg>
+  )
+}
+export function ArrowHeadIcon(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" {...props}  width="1em" height="1em" viewBox="-6 0 24 24">
+      <defs>
+        <path id="SVG1pzpbdYY" fill="currentColor" d="m7.588 12.43l-1.061 1.06L.748 7.713a.996.996 0 0 1 0-1.413L6.527.52l1.06 1.06l-5.424 5.425z"></path>
+      </defs>
+      <use fillRule="evenodd" href="#SVG1pzpbdYY" transform="rotate(-180 5.02 9.505)"></use>
+    </svg>
+  )
+}

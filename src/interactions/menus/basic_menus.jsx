@@ -28,7 +28,7 @@ export function SelectFlow({onSelect, children, filter = ""}) {
     switch (child.type) {
       case SelectFlowItem:
         return (
-          <div onClick={() => onSelect?.(child.props.value)} key={child.key} className="cursor-pointer select-none rounded-lg transition duration-300 gap-2 flex hover:bg-primary p-2 items-center">
+          <div onClick={() => onSelect?.(child.props.value)} key={child.key} className="cursor-pointer select-none transition duration-300 gap-2 flex hover:bg-primary p-2 items-center">
             {child.props.icon !== undefined ? <span className="text-lg">{child.props.icon}</span> : null}
             <span>{child.props.title}</span>
           </div>
