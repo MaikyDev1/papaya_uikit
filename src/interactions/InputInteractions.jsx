@@ -77,8 +77,7 @@ export function SliderSelector ({id, title, error, children}) {
 }
 
 import { useRef } from "react";
-import {SearchIcon} from "@/icons/icons";
-import {Pami} from "../app/pami/page";
+import {SearchIcon} from "../icons/icons";
 
 export function SliderItem2({ id, text, parent, checked, onChange }) {
   const min = 0;

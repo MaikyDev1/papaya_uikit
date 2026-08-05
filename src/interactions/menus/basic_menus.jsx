@@ -1,6 +1,18 @@
 import React, {useState} from "react";
 import {InputTypeBox} from "@/interactions/InputInteractions";
 
+export function EmojiSelectFlow({onSelect, children, filter = ""}) {
+  const [search, setSearch] = useState(filter);
+  return (
+    <div className="flex gap-1 flex-col">
+      <InputTypeBox placeholder="Search" onChange={(e) => setSearch(e.target.value)} title="Search"/>
+      <SelectFlow onSelect={onSelect} filter={search}>
+        {children}
+      </SelectFlow>
+    </div>
+  )
+}
+
 export function SearchableSelectFlow({onSelect, children, filter = ""}) {
     const [search, setSearch] = useState(filter);
     return (
@@ -28,7 +40,10 @@ export function SelectFlow({onSelect, children, filter = ""}) {
     switch (child.type) {
       case SelectFlowItem:
         return (
-          <div onClick={() => onSelect?.(child.props.value)} key={child.key} className="cursor-pointer select-none transition duration-300 gap-2 flex hover:bg-primary p-2 items-center">
+          <div onClick={() => {
+            onSelect?.(child.props.value);
+            child.props.onClick?.();
+          }} key={child.key} className="cursor-pointer select-none transition duration-300 gap-2 flex hover:bg-stone-200 rounded-full corner-squircle p-2 items-center">
             {child.props.icon !== undefined ? <span className="text-lg">{child.props.icon}</span> : null}
             <span>{child.props.title}</span>
           </div>
@@ -53,5 +68,5 @@ export function SelectFlow({onSelect, children, filter = ""}) {
   )
 }
 
-export function SelectFlowItem({id, value, title, icon}) {}
+export function SelectFlowItem({id, value, title, icon, onClick}) {}
 export function SelectFlowDivider({name}) {}
