@@ -7,7 +7,7 @@ export function PrimaryButton({fullWidth, icon, title, onClick, indicator}) {
       {icon}
       <span className="sr-only">Notifications</span>
       <span>
-        {title}
+        {title ?? <span className="opacity-0">shd</span>}
       </span>
       { indicator > 0 ?
         <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs
@@ -26,7 +26,7 @@ export function SecondaryButton({fullWidth, icon, title, onClick, indicator}) {
       {icon}
       <span className="sr-only">Notifications</span>
       <span>
-        {title}
+        {title ?? <span className="opacity-0">shd</span>}
       </span>
       { indicator > 0 ?
         <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs

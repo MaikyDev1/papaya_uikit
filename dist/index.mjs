@@ -7,8 +7,8 @@ function PrimaryButton({ fullWidth, icon, title, onClick, indicator }) {
      hover:bg-primary-darker focus:ring-4 focus:outline-none focus:ring-primary/40`, children: [
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
-    /* @__PURE__ */ jsx("span", { children: title }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
@@ -18,8 +18,8 @@ function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
      hover:bg-stone-300 focus:ring-4 focus:outline-none focus:ring-stone-300/40`, children: [
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
-    /* @__PURE__ */ jsx("span", { children: title }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 
