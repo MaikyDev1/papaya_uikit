@@ -6,11 +6,15 @@ export default defineConfig({
   clean: true,
   sourcemap: true,
   dts: false,
-  external: ["react", "react-dom", "next"],
+
+  external: [
+    "react",
+    "react-dom",
+    "react/jsx-runtime",
+    "next",
+  ],
 
   esbuildOptions(options) {
     options.jsx = "automatic";
-    options.jsxFactory = undefined;
-    options.jsxFragment = undefined;
   },
 });

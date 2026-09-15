@@ -74,7 +74,7 @@ import { useRef } from "react";
 import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 function InputTypeBox({ id, type, title, placeholder, defaultText, error, ...props }) {
   return /* @__PURE__ */ jsxs4("div", { className: "w-full", children: [
-    title ? /* @__PURE__ */ jsx4("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
+    title ? /* @__PURE__ */ jsx4("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
     /* @__PURE__ */ jsx4(
       "input",
       {
@@ -237,7 +237,7 @@ function RangeTypeBox({ id, title, value, selected, error }) {
 }
 function PinInputMode({ error, title }) {
   return /* @__PURE__ */ jsxs4("div", { children: [
-    /* @__PURE__ */ jsx4("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2", children: title }),
+    /* @__PURE__ */ jsx4("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-2", children: title }),
     /* @__PURE__ */ jsxs4("div", { className: "flex gap-1", children: [
       /* @__PURE__ */ jsx4("input", { type: "number", onChange: (e) => {
         e.target.value !== "" ? document.getElementById(`pin-2`).focus() : null;
@@ -256,7 +256,7 @@ function PinInputMode({ error, title }) {
   ] });
 }
 function SearchBox() {
-  return /* @__PURE__ */ jsxs4("div", { className: "px-4 py-3 text-grey-darker  select-none rounded-full bg-stone-200 flex gap-2 items-center", children: [
+  return /* @__PURE__ */ jsxs4("div", { className: "px-4 py-3 text-slate-600  select-none rounded-full bg-stone-200 flex gap-2 items-center", children: [
     /* @__PURE__ */ jsx4(SearchIcon, { className: "text-2xl" }),
     /* @__PURE__ */ jsx4("input", { type: "text", placeholder: "Search", className: "w-full appearance-none outline-none" })
   ] });
@@ -267,7 +267,7 @@ import { useState as useState2 } from "react";
 import { jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
 function SelectTypeBox({ error, id, title, children, onChange, ...props }) {
   return /* @__PURE__ */ jsxs5("div", { className: "w-full", children: [
-    /* @__PURE__ */ jsx5("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1", htmlFor: id, children: title }),
+    /* @__PURE__ */ jsx5("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }),
     /* @__PURE__ */ jsx5(
       "select",
       {
@@ -322,7 +322,7 @@ function SelectFlow({ onSelect, children, filter = "" }) {
         const next = array[index + 1];
         if (!next || next.type !== SelectFlowItem)
           return null;
-        return /* @__PURE__ */ jsx6("div", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold", children: child.props.name }, child.key);
+        return /* @__PURE__ */ jsx6("div", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold", children: child.props.name }, child.key);
       default:
         return null;
     }
@@ -368,7 +368,7 @@ function SmallTextBanner({ onClose, buttonTitle, onButtonClick, title, descripti
         /* @__PURE__ */ jsx8(ArrowIcon, { className: "text-lg rotate-90" })
       ] })
     ] }),
-    /* @__PURE__ */ jsx8("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ jsx8(CloseIcon, { className: "text-3xl" }) })
+    /* @__PURE__ */ jsx8("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ jsx8(CloseIcon, { onClick: onClose, className: "text-3xl" }) })
   ] }) });
 }
 export {

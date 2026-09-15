@@ -5,7 +5,7 @@ export function InputTypeBox({id, type, title, placeholder, defaultText, error, 
   return (
     <div className="w-full">
       {title ?
-        <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1" htmlFor={id}>
+        <label className="block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1" htmlFor={id}>
           {title}
         </label> : null}
       <input {...props} className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none bg-stone-200 w-full rounded-full corner-squircle py-2 px-3"}
@@ -62,7 +62,7 @@ export function SliderSelector ({id, title, error, children}) {
   return (
     <div className="w-full">
       {title ?
-        <label className={(error ? "text-rose-600 " : "mb-2") + " block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"} htmlFor={id}>
+        <label className={(error ? "text-rose-600 " : "mb-2") + " block uppercase tracking-wide text-slate-600 text-xs font-bold mb-2"} htmlFor={id}>
           {title}
         </label> : null}
       {/*<input className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-amber-400 mb-2") + " appearance-none outline-none bg-white/10 w-full rounded py-2 px-3"}*/}
@@ -221,7 +221,7 @@ export function WarningBox({icon, text}) {
 export function PinInputMode({error, title}) {
   return (
     <div>
-      <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+      <label className="block uppercase tracking-wide text-slate-600 text-xs font-bold mb-2">
         {title}
       </label>
       <div className="flex gap-1">
@@ -238,7 +238,7 @@ export function PinInputMode({error, title}) {
 
 export function SearchBox() {
   return (
-    <div className="px-4 py-3 text-grey-darker  select-none rounded-full bg-stone-200 flex gap-2 items-center">
+    <div className="px-4 py-3 text-slate-600  select-none rounded-full bg-stone-200 flex gap-2 items-center">
       <SearchIcon className="text-2xl"/>
       <input type="text" placeholder="Search" className="w-full appearance-none outline-none"/>
     </div>

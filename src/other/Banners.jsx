@@ -20,7 +20,7 @@ export function SmallTextBanner({onClose, buttonTitle, onButtonClick, title, des
           }
         </div>
         <div className="hover:bg-stone-50/15 rounded-lg">
-          <CloseIcon className="text-3xl"/>
+          <CloseIcon onClick={onClose} className="text-3xl"/>
         </div>
       </div>
     </div>

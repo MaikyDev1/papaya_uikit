@@ -130,7 +130,7 @@ var import_react3 = require("react");
 var import_jsx_runtime4 = require("react/jsx-runtime");
 function InputTypeBox({ id, type, title, placeholder, defaultText, error, ...props }) {
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "w-full", children: [
-    title ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
+    title ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
       "input",
       {
@@ -293,7 +293,7 @@ function RangeTypeBox({ id, title, value, selected, error }) {
 }
 function PinInputMode({ error, title }) {
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-2", children: title }),
     /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex gap-1", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("input", { type: "number", onChange: (e) => {
         e.target.value !== "" ? document.getElementById(`pin-2`).focus() : null;
@@ -312,7 +312,7 @@ function PinInputMode({ error, title }) {
   ] });
 }
 function SearchBox() {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "px-4 py-3 text-grey-darker  select-none rounded-full bg-stone-200 flex gap-2 items-center", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "px-4 py-3 text-slate-600  select-none rounded-full bg-stone-200 flex gap-2 items-center", children: [
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SearchIcon, { className: "text-2xl" }),
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("input", { type: "text", placeholder: "Search", className: "w-full appearance-none outline-none" })
   ] });
@@ -323,7 +323,7 @@ var import_react4 = require("react");
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function SelectTypeBox({ error, id, title, children, onChange, ...props }) {
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1", htmlFor: id, children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }),
     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       "select",
       {
@@ -378,7 +378,7 @@ function SelectFlow({ onSelect, children, filter = "" }) {
         const next = array[index + 1];
         if (!next || next.type !== SelectFlowItem)
           return null;
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "block uppercase tracking-wide text-grey-darker text-xs font-bold", children: child.props.name }, child.key);
+        return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold", children: child.props.name }, child.key);
       default:
         return null;
     }
@@ -424,7 +424,7 @@ function SmallTextBanner({ onClose, buttonTitle, onButtonClick, title, descripti
         /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowIcon, { className: "text-lg rotate-90" })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { className: "text-3xl" }) })
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { onClick: onClose, className: "text-3xl" }) })
   ] }) });
 }
 // Annotate the CommonJS export names for ESM import in node:

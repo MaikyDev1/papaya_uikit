@@ -3,7 +3,7 @@ import {useState} from "react";
 export function SelectTypeBox({error, id, title, children, onChange, ...props}) {
   return (
     <div className="w-full">
-      <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1" htmlFor={id}>
+      <label className="block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1" htmlFor={id}>
         {title}
       </label>
       <select
@@ -23,7 +23,7 @@ export function SearchableSelectTypeBox({error, id, title, children, onChange, .
   const [search, setSearch] = useState("");
   return (
     <div className="w-full">
-      <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-1" htmlFor={id}>
+      <label className="block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1" htmlFor={id}>
         {title}
       </label>
       <select

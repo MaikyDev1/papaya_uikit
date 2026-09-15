@@ -6,7 +6,9 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "tsup",
+    "build": "npm run build:css && npm run build:js",
+    "build:js": "tsup",
+    "build:css": "npx @tailwindcss/cli -i ./src/theme.css -o ./dist/theme.css --minify",
     "start": "next start"
   },
   "exports": {

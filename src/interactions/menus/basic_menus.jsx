@@ -53,7 +53,7 @@ export function SelectFlow({onSelect, children, filter = ""}) {
         const next = array[index + 1]
         if (!next || next.type !== SelectFlowItem)
           return null;
-        return <div key={child.key} className="block uppercase tracking-wide text-grey-darker text-xs font-bold">
+        return <div key={child.key} className="block uppercase tracking-wide text-slate-600 text-xs font-bold">
           {child.props.name}
         </div>;
 
