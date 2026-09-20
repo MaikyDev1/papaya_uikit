@@ -16,30 +16,22 @@ export function InputTypeBox({id, type, title, placeholder, defaultText, error, 
   )
 }
 
-export function RadioTypeBox({ id, title, value }) {
-  const [checked, setChecked] = useState(false);
-
-  const handleClick = () => {
-    setChecked((prev) => !prev);
-  };
+export function RadioTypeBox({ id, title, checked = false, onChange }) {
 
   return (
     <div
       className={`w-full flex select-none justify-center items-center rounded`}
     >
       <input
-        id={`${id}${value}`}
-        type="radio"
-        name={id}
-        value={value}
+        id={id}
+        type="checkbox"
         checked={checked}
-        onChange={() => {}}
-        onClick={handleClick}
+        onChange={(e) => onChange?.(e.target.checked)}
         className="w-4 h-4 appearance-none rounded-md bg-stone-200 checked:bg-yellow-400"
       />
 
       <label
-        htmlFor={`${id}${value}`}
+        htmlFor={`${id}`}
         className={`w-full py-2 ms-2 text-sm font-medium ${
           checked ? "text-yellow-400" : ""
         }`}

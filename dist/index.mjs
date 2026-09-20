@@ -8,7 +8,7 @@ function PrimaryButton({ fullWidth, icon, title, onClick, indicator }) {
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
     /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
@@ -19,7 +19,7 @@ function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
     /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 
@@ -89,11 +89,7 @@ function InputTypeBox({ id, type, title, placeholder, defaultText, error, ...pro
     error ? /* @__PURE__ */ jsx4("p", { className: "text-red text-xs italic mt-1 text-rose-600", children: error }) : null
   ] });
 }
-function RadioTypeBox({ id, title, value }) {
-  const [checked, setChecked] = useState(false);
-  const handleClick = () => {
-    setChecked((prev) => !prev);
-  };
+function RadioTypeBox({ id, title, checked = false, onChange }) {
   return /* @__PURE__ */ jsxs4(
     "div",
     {
@@ -102,21 +98,17 @@ function RadioTypeBox({ id, title, value }) {
         /* @__PURE__ */ jsx4(
           "input",
           {
-            id: `${id}${value}`,
-            type: "radio",
-            name: id,
-            value,
+            id,
+            type: "checkbox",
             checked,
-            onChange: () => {
-            },
-            onClick: handleClick,
+            onChange: (e) => onChange == null ? void 0 : onChange(e.target.checked),
             className: "w-4 h-4 appearance-none rounded-md bg-stone-200 checked:bg-yellow-400"
           }
         ),
         /* @__PURE__ */ jsx4(
           "label",
           {
-            htmlFor: `${id}${value}`,
+            htmlFor: `${id}`,
             className: `w-full py-2 ms-2 text-sm font-medium ${checked ? "text-yellow-400" : ""}`,
             children: title
           }
@@ -337,7 +329,7 @@ function SelectFlowDivider({ name }) {
 // src/interactions/menus/popups.jsx
 import { jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
 function BasicPopup({ children, buttons, onBack, onClose }) {
-  return /* @__PURE__ */ jsx7("section", { className: "absolute z-100 top-0 left-0 flex flex-col items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ jsxs7("div", { className: "border lg:w-2/4 xl:w-1/4 top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
+  return /* @__PURE__ */ jsx7("section", { className: "absolute z-100 top-0 left-0 flex flex-col items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ jsxs7("div", { className: "border lg:w-2/4 xl:w-2/4 2xl:w-1/4 top-1/6 2xl:top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
     onBack && /* @__PURE__ */ jsx7("div", { onClick: onBack, className: "absolute cursor-pointer left-5 top-4", children: /* @__PURE__ */ jsx7(ArrowHeadIcon, { className: "rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
     onClose && /* @__PURE__ */ jsx7("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ jsx7(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
     /* @__PURE__ */ jsx7("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),

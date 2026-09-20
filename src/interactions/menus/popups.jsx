@@ -4,7 +4,7 @@ import {ArrowHeadIcon, CloseIcon} from "../../icons/icons";
 export function BasicPopup({children, buttons, onBack, onClose}) {
   return (
     <section className="absolute z-100 top-0 left-0 flex flex-col items-center p-2 bg-stone-800/15 w-screen h-screen">
-      <div className="border lg:w-2/4 xl:w-1/4 top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl">
+      <div className="border lg:w-2/4 xl:w-2/4 2xl:w-1/4 top-1/6 2xl:top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl">
         {onBack &&
           <div onClick={onBack} className="absolute cursor-pointer left-5 top-4">
             <ArrowHeadIcon className="rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border"/>
