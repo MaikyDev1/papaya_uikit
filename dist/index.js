@@ -29,12 +29,14 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.jsx
 var index_exports = {};
 __export(index_exports, {
+  Badge: () => Badge,
   BasicPopup: () => BasicPopup,
   Breadcrumb: () => Breadcrumb,
   BreadcrumbItem: () => BreadcrumbItem,
   FilesIcon: () => FilesIcon,
   ImagePopup: () => ImagePopup,
   InputTypeBox: () => InputTypeBox,
+  LargeBasicPopup: () => LargeBasicPopup,
   MessagesIcon: () => MessagesIcon,
   PinInputMode: () => PinInputMode,
   PrimaryButton: () => PrimaryButton,
@@ -129,6 +131,23 @@ var import_react2 = require("react");
 var import_react3 = require("react");
 var import_jsx_runtime4 = require("react/jsx-runtime");
 function InputTypeBox({ id, type, title, placeholder, defaultText, error, ...props }) {
+  if (type === "color") {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "w-full", children: [
+      title ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+        "input",
+        {
+          ...props,
+          className: (error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none bg-stone-200 w-full rounded-full corner-squircle h-10 px-3",
+          id,
+          type: type ? type : "text",
+          placeholder,
+          defaultValue: defaultText
+        }
+      ),
+      error ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-red text-xs italic mt-1 text-rose-600", children: error }) : null
+    ] });
+  }
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "w-full", children: [
     title ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1", htmlFor: id, children: title }) : null,
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
@@ -382,51 +401,101 @@ function SelectFlowItem({ id, value, title, icon, onClick }) {
 function SelectFlowDivider({ name }) {
 }
 
-// src/interactions/menus/popups.jsx
+// src/colors.js
+var colors = {
+  lime: "text-lime-800 bg-lime-300",
+  green: "text-green-800 bg-green-300",
+  emerald: "text-emerald-800 bg-emerald-300",
+  blue: "text-blue-800 bg-blue-300",
+  violet: "text-violet-800 bg-violet-300",
+  sky: "text-sky-800 bg-sky-300",
+  yellow: "text-yellow-800 bg-yellow-300",
+  red: "text-red-800 bg-red-300",
+  amber: "text-amber-800 bg-amber-300",
+  purple: "text-purple-800 bg-purple-300",
+  pink: "text-pink-800 bg-pink-300",
+  rose: "text-rose-800 bg-rose-300",
+  stone: "text-stone-800 bg-stone-300"
+};
+
+// src/other/Texts.jsx
 var import_jsx_runtime7 = require("react/jsx-runtime");
+function Badge({ icon, name, color, disabled, onClick, isGrabbable = false, ...props }) {
+  const isClickable = disabled && onClick;
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+    "div",
+    {
+      ...props,
+      onClick: isClickable ? onClick : null,
+      className: `
+          p-1 px-2 flex select-none items-center justify-center gap-1 rounded-full corner-squircle transition-colors duration-100
+          ${isClickable ? "cursor-pointer hover:bg-stone-400" : ""}
+          ${isGrabbable ? "cursor-grab" : ""}
+          ${disabled ? "text-stone-800 bg-stone-300" : colors[color]}
+        `,
+      children: [
+        icon,
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "font-mono font-semibold text-sm", children: name })
+      ]
+    }
+  );
+}
+
+// src/interactions/menus/popups.jsx
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function BasicPopup({ children, buttons, onBack, onClose }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "absolute z-100 top-0 left-0 flex flex-col items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border lg:w-2/4 xl:w-2/4 2xl:w-1/4 top-1/6 2xl:top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
-    onBack && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { onClick: onBack, className: "absolute cursor-pointer left-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowHeadIcon, { className: "rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
-    onClose && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
-    buttons && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("section", { className: "absolute z-100 top-0 left-0 flex flex-col items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border lg:w-2/4 xl:w-2/4 2xl:w-1/4 top-1/6 2xl:top-1/4 sm:w-3/4 md:w-2/3 w-full flex justify-between relative flex-col border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
+    onBack && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { onClick: onBack, className: "absolute cursor-pointer left-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowHeadIcon, { className: "rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
+    onClose && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
+    buttons && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
+  ] }) });
+}
+function LargeBasicPopup({ children, buttons, onBack, onClose }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("section", { className: "absolute h-screen w-screen p-2 bg-stone-800/10 backdrop-blur-[2px] flex justify-center items-center z-50 top-0 left-0", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border max-h-2/3 2xl:w-1/2 xl:w-2/3 w-full relative overflow-auto border-stone-300 bg-stone-50 min-h-40 corner-squircle rounded-3xl", children: [
+    onBack && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { onClick: onBack, className: "absolute cursor-pointer left-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowHeadIcon, { className: "rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
+    onClose && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
+    buttons && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
   ] }) });
 }
 function ImagePopup({ children, image, buttons, onClose }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { className: "absolute z-100 flex flex-col justify-center items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border flex lg:w-2/4 xl:w-1/2  sm:w-3/4 md:w-2/3 w-full relative border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
-    onClose && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "lg:block hidden h-full p-4", children: image }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "w-full h-full", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
-      buttons && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("section", { className: "absolute z-100 flex flex-col justify-center items-center p-2 bg-stone-800/15 w-screen h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border flex lg:w-2/4 xl:w-1/2  sm:w-3/4 md:w-2/3 w-full relative border-stone-300 drop-shadow-2xl bg-stone-50 min-h-40 rounded-4xl", children: [
+    onClose && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "lg:block hidden h-full p-4", children: image }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "w-full h-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
+      buttons && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
     ] })
   ] }) });
 }
 
 // src/other/Banners.jsx
-var import_jsx_runtime8 = require("react/jsx-runtime");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function SmallTextBanner({ onClose, buttonTitle, onButtonClick, title, description, icon }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "relative cursor-default select-none w-fulltext-base justify-between font-regular px-4 py-4 rounded-lg bg-red-500 text-white flex", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-2 items-center", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "relative cursor-default select-none w-fulltext-base justify-between font-regular px-4 py-4 rounded-lg bg-red-500 text-white flex", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex gap-2 items-center", children: [
       icon,
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-stone-900 font-semibold", children: title }),
-      description && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-white", children: description }),
-      buttonTitle && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { onClick: onButtonClick, className: "text-center flex gap-2 text-sm font-bold text-secondary transition-all duration-200 rounded-md hover:text-stone-700", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-stone-900 font-semibold", children: title }),
+      description && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-white", children: description }),
+      buttonTitle && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { onClick: onButtonClick, className: "text-center flex gap-2 text-sm font-bold text-secondary transition-all duration-200 rounded-md hover:text-stone-700", children: [
         buttonTitle,
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowIcon, { className: "text-lg rotate-90" })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ArrowIcon, { className: "text-lg rotate-90" })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CloseIcon, { onClick: onClose, className: "text-3xl" }) })
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "hover:bg-stone-50/15 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CloseIcon, { onClick: onClose, className: "text-3xl" }) })
   ] }) });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  Badge,
   BasicPopup,
   Breadcrumb,
   BreadcrumbItem,
   FilesIcon,
   ImagePopup,
   InputTypeBox,
+  LargeBasicPopup,
   MessagesIcon,
   PinInputMode,
   PrimaryButton,

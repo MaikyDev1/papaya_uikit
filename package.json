@@ -6,7 +6,8 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:js && npm run copy:css",
+    "copy:css": "copy /Y src\\theme.css dist\\theme.css",
     "build:js": "tsup",
     "build:css": "npx @tailwindcss/cli -i ./src/theme.css -o ./dist/theme.css --minify",
     "start": "next start"

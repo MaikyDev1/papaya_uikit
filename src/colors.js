@@ -1,0 +1,15 @@
+export const colors = {
+  lime: "text-lime-800 bg-lime-300",
+  green: "text-green-800 bg-green-300",
+  emerald: "text-emerald-800 bg-emerald-300",
+  blue: "text-blue-800 bg-blue-300",
+  violet: "text-violet-800 bg-violet-300",
+  sky: "text-sky-800 bg-sky-300",
+  yellow: "text-yellow-800 bg-yellow-300",
+  red: "text-red-800 bg-red-300",
+  amber: "text-amber-800 bg-amber-300",
+  purple: "text-purple-800 bg-purple-300",
+  pink: "text-pink-800 bg-pink-300",
+  rose: "text-rose-800 bg-rose-300",
+  stone: "text-stone-800 bg-stone-300",
+};

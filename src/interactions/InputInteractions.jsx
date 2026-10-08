@@ -2,6 +2,20 @@
 import { useState } from "react";
 
 export function InputTypeBox({id, type, title, placeholder, defaultText, error, ...props}) {
+  if (type === "color") {
+    return (
+      <div className="w-full">
+        {title ?
+          <label className="block uppercase tracking-wide text-slate-600 text-xs font-bold mb-1" htmlFor={id}>
+            {title}
+          </label> : null}
+        <input {...props} className={(error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none w-full rounded-full corner-squircle h-8 px-3"}
+               id={id} type={type ? type : "text"} placeholder={placeholder} defaultValue={defaultText}/>
+        {error ?
+          <p className="text-red text-xs italic mt-1 text-rose-600">{error}</p> : null}
+      </div>
+    )
+  }
   return (
     <div className="w-full">
       {title ?

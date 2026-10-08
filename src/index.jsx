@@ -20,5 +20,6 @@ export {
   SelectFlowItem
 } from "./interactions/menus/basic_menus";
 
-export { BasicPopup, ImagePopup } from "./interactions/menus/popups";
+export { Badge } from "./other/Texts"
+export { BasicPopup, LargeBasicPopup, ImagePopup } from "./interactions/menus/popups";
 export { SmallTextBanner } from "./other/Banners";
