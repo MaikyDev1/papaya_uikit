@@ -8,7 +8,7 @@ function PrimaryButton({ fullWidth, icon, title, onClick, indicator }) {
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
     /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
@@ -19,7 +19,7 @@ function SecondaryButton({ fullWidth, icon, title, onClick, indicator }) {
     icon,
     /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Notifications" }),
     /* @__PURE__ */ jsx("span", { children: title ?? /* @__PURE__ */ jsx("span", { className: "opacity-0", children: "shd" }) }),
-    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\r\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
+    indicator > 0 ? /* @__PURE__ */ jsx("div", { className: "absolute inline-flex items-center justify-center w-6 h-6 text-xs\n        font-bold text-white bg-red-500 border-2 border-stone-50 rounded-full -top-2 -end-2", children: indicator }) : null
   ] });
 }
 
@@ -80,7 +80,7 @@ function InputTypeBox({ id, type, title, placeholder, defaultText, error, ...pro
         "input",
         {
           ...props,
-          className: (error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none bg-stone-200 w-full rounded-full corner-squircle h-10 px-3",
+          className: (error ? "ring-2 ring-rose-600 text-rose-600 " : "focus:ring-2 focus:ring-primary") + " select-none appearance-none outline-none w-full rounded-full corner-squircle h-8 px-3",
           id,
           type: type ? type : "text",
           placeholder,
@@ -393,11 +393,11 @@ function BasicPopup({ children, buttons, onBack, onClose }) {
     buttons && /* @__PURE__ */ jsx8("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
   ] }) });
 }
-function LargeBasicPopup({ children, buttons, onBack, onClose }) {
-  return /* @__PURE__ */ jsx8("section", { className: "absolute h-screen w-screen p-2 bg-stone-800/10 backdrop-blur-[2px] flex justify-center items-center z-50 top-0 left-0", children: /* @__PURE__ */ jsxs8("div", { className: "border max-h-2/3 2xl:w-1/2 xl:w-2/3 w-full relative overflow-auto border-stone-300 bg-stone-50 min-h-40 corner-squircle rounded-3xl", children: [
+function LargeBasicPopup({ children, buttons, onBack, onClose, maxH = "66%" }) {
+  return /* @__PURE__ */ jsx8("section", { className: "absolute h-screen w-screen p-2 bg-stone-800/10 backdrop-blur-[2px] flex justify-center items-center z-50 top-0 left-0", children: /* @__PURE__ */ jsxs8("div", { className: "border 2xl:w-1/2 xl:w-2/3 w-full relative overflow-auto border-stone-300 bg-stone-50 min-h-40 corner-squircle rounded-3xl", children: [
     onBack && /* @__PURE__ */ jsx8("div", { onClick: onBack, className: "absolute cursor-pointer left-5 top-4", children: /* @__PURE__ */ jsx8(ArrowHeadIcon, { className: "rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
     onClose && /* @__PURE__ */ jsx8("div", { onClick: onClose, className: "absolute cursor-pointer right-5 top-4", children: /* @__PURE__ */ jsx8(CloseIcon, { className: "rounded-full border-stone-300 text-stone-500 text-2xl p-1 border" }) }),
-    /* @__PURE__ */ jsx8("div", { className: "p-10 flex flex-col gap-1 wrap-break-word", children }),
+    /* @__PURE__ */ jsx8("div", { className: `p-6 flex flex-col gap-1 wrap-break-word`, style: { maxHeight: maxH }, children }),
     buttons && /* @__PURE__ */ jsx8("div", { className: "border-t px-6 py-5 gap-2 flex justify-end border-stone-200", children: buttons })
   ] }) });
 }

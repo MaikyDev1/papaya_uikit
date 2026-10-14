@@ -27,10 +27,10 @@ export function BasicPopup({children, buttons, onBack, onClose}) {
   )
 }
 
-export function LargeBasicPopup({children, buttons, onBack, onClose}) {
+export function LargeBasicPopup({children, buttons, onBack, onClose, maxH = "66%"}) {
   return (
     <section className="absolute h-screen w-screen p-2 bg-stone-800/10 backdrop-blur-[2px] flex justify-center items-center z-50 top-0 left-0">
-      <div className="border max-h-2/3 2xl:w-1/2 xl:w-2/3 w-full relative overflow-auto border-stone-300 bg-stone-50 min-h-40 corner-squircle rounded-3xl">
+      <div className="border 2xl:w-1/2 xl:w-2/3 w-full relative overflow-auto border-stone-300 bg-stone-50 min-h-40 corner-squircle rounded-3xl">
         {onBack &&
           <div onClick={onBack} className="absolute cursor-pointer left-5 top-4">
             <ArrowHeadIcon className="rounded-full rotate-180 border-stone-300 text-stone-500 text-2xl p-1 border"/>
@@ -41,7 +41,7 @@ export function LargeBasicPopup({children, buttons, onBack, onClose}) {
             <CloseIcon className="rounded-full border-stone-300 text-stone-500 text-2xl p-1 border"/>
           </div>
         }
-        <div className="p-10 flex flex-col gap-1 wrap-break-word">
+        <div className={`p-6 flex flex-col gap-1 wrap-break-word`} style={{maxHeight: maxH}}>
           {children}
         </div>
         {buttons &&
