@@ -1,26 +1,104 @@
-@plugin "@toolwind/corner-shape";
-@source "./*.{js,mjs}";
+@source "./*.{js,mjs,cjs}";
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
+/* Defaults live in @layer base so a consumer's own unlayered :root always wins. */
+@layer base {
+    :root {
+        --primary: #F7971E;
+        --primary-darker: #e88300;
+        --primary-text: #C62828;
 
-    --primary: #F7971E;
-    --primary-darker: #e88300;
-    --primary-text: #C62828;
-
-    --secondary: #FBC02D;
-    --secondary-text: #F5F5DC;
+        --code-fg: #1c1917;       /* stone-900 */
+        --code-keyword: #7e22ce;  /* purple-700 */
+        --code-string: #166534;   /* green-800 */
+        --code-number: #9a3412;   /* orange-800 */
+        --code-comment: #57534e;  /* stone-600 */
+        --code-title: #0369a1;    /* sky-700 */
+        --code-attr: #b91c1c;     /* red-700 */
+    }
 }
 
-@theme {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-
+/* "inline" makes bg-primary compile to var(--primary), so consumers
+   can override the color with a plain :root { --primary: ... } */
+@theme inline {
     --color-primary: var(--primary);
     --color-primary-darker: var(--primary-darker);
     --color-primary-text: var(--primary-text);
+}
 
-    --color-secondary: var(--secondary);
-    --color-secondary-text: var(--secondary-text);
+@theme {
+    --squircle-scale: 1.5;
+}
+
+/* Syntax highlighting. In @layer components so utility classes can still override it. */
+@layer components {
+    .hljs { color: var(--code-fg); }
+    .hljs-keyword, .hljs-type { color: var(--code-keyword); }
+    .hljs-string { color: var(--code-string); }
+    .hljs-number, .hljs-literal { color: var(--code-number); }
+    .hljs-comment { color: var(--code-comment); font-style: italic; }
+    .hljs-title, .hljs-built_in { color: var(--code-title); }
+    .hljs-attr, .hljs-variable, .hljs-params { color: var(--code-attr); }
+}
+
+@utility squircle-full {
+    border-radius: var(--radius-2xl);
+
+    @supports (corner-shape: squircle) {
+        border-radius: 9999px;
+        corner-shape: squircle;
+    }
+}
+
+
+@utility squircle-* {
+    border-radius: calc(--value(--radius-*) / var(--squircle-scale));
+
+    @supports (corner-shape: squircle) {
+        border-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        corner-shape: squircle;
+    }
+}
+
+@utility squircle-t-* {
+    border-top-left-radius: calc(--value(--radius-*) / var(--squircle-scale));
+    border-top-right-radius: calc(--value(--radius-*) / var(--squircle-scale));
+
+    @supports (corner-shape: squircle) {
+        border-top-left-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        border-top-right-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        corner-shape: squircle;
+    }
+}
+
+@utility squircle-b-* {
+    border-bottom-left-radius: calc(--value(--radius-*) / var(--squircle-scale));
+    border-bottom-right-radius: calc(--value(--radius-*) / var(--squircle-scale));
+
+    @supports (corner-shape: squircle) {
+        border-bottom-left-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        border-bottom-right-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        corner-shape: squircle;
+    }
+}
+
+@utility squircle-l-* {
+    border-top-left-radius: calc(--value(--radius-*) / var(--squircle-scale));
+    border-bottom-left-radius: calc(--value(--radius-*) / var(--squircle-scale));
+
+    @supports (corner-shape: squircle) {
+        border-top-left-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        border-bottom-left-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        corner-shape: squircle;
+    }
+}
+
+@utility squircle-r-* {
+    border-top-right-radius: calc(--value(--radius-*) / var(--squircle-scale));
+    border-bottom-right-radius: calc(--value(--radius-*) / var(--squircle-scale));
+
+    @supports (corner-shape: squircle) {
+        border-top-right-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        border-bottom-right-radius: calc(--value(--radius-*) * var(--squircle-scale));
+        corner-shape: squircle;
+    }
 }

@@ -1,82 +1,78 @@
 'use client'
 
-import Image from "next/image";
-import {PrimaryButton, SecondaryButton} from "@/buttons/BasicButtons";
-import {FilesIcon, MessagesIcon} from "@/icons/icons";
-import {Breadcrumb, BreadcrumbItem} from "@/other/Breadcrumb";
-import {
-  InputTypeBox,
-  PinInputMode,
-  RadioTypeBox,
-  RangeTypeBox, SearchBox,
-  SliderItem,
-  SliderItem2
-} from "@/interactions/InputInteractions";
-import {SelectItem, SelectTypeBox} from "@/interactions/SelectInteractions";
-import {SearchableSelectFlow, SelectFlow, SelectFlowDivider, SelectFlowItem} from "@/interactions/menus/basic_menus";
-import {useState} from "react";
-import {BasicPopup, ImagePopup} from "../interactions/menus/popups";
-import {SmallTextBanner} from "../other/Banners";
+import {useRef, useState} from "react";
+import {SelectFromListWithSearch} from "@/interactions/Selectors/SelectFromList";
+import {InputTypeBox} from "@/interactions/inputs/InputInteractions";
+import {SearchIcon, TitleIcon} from "@/icons/icons";
+import {IconSelector} from "@/interactions/Selectors/emoji/IconsSelection";
+import {CheckBox, Options, Switch} from "@/buttons/ComplexButtons";
+import {PinBoxInput} from "@/interactions/inputs/PinBoxInput";
+import {PasswordInputType} from "@/interactions/inputs/PasswordTypeBox";
+import {CodeBox} from "@/interactions/displays/CodeBlock";
+import {TabItem, Tabs, VerticalTabs} from "@/menus/Tabs";
+import {BasicPopup, ImagePopup, LargeBasicPopup} from "@/menus/Popups";
+import {PrimaryButton} from "@/buttons/BasicButtons";
+import {Image} from "next/dist/client/image-component";
 
 export default function Home() {
   const [selected, setSelected] = useState("");
-  return (
-    <main className="bg-stone-50 overflow-auto w-screen h-screen gap-2 text-stone-900">
-      {selected === "popup_2" ?
-        <BasicPopup onClose={() => setSelected("")} buttons={[<SecondaryButton onClick={() => setSelected("")} title="Close"/>, <PrimaryButton title="Save"/>]}>
-          <p className="text-xl font-semibold pb-1">Add a new anchor</p>
-          <p>If you need for the text you want to become clickable!</p>
-          <InputTypeBox placeholder="Add new anchor"/>
-        </BasicPopup> : null
-      }
-      {selected === "popup_1" ?
-        <ImagePopup image={<img className="rounded-4xl corner-squircle" src="/demo-popup.jpg"/>} onClose={() => setSelected("")} buttons={[<SecondaryButton onClick={() => setSelected("")} title="No thanks!"/>]}>
-          <p className="text-xl font-semibold pb-1">Add a new anchor</p>
-          <p>If you need for the text you want to become clickable!</p>
-          <InputTypeBox placeholder="Add new anchor"/>
-        </ImagePopup> : null
-      }
-      <div className="gap-2 flex p-10 px-50 flex-col">
-        Welcome to Papaya UI Kit example
-        <SmallTextBanner title="Reduceri?" description="Cred? eu zic sa vezi!" buttonTitle="Get now"/>
-        <PrimaryButton icon={<MessagesIcon/>} title="Messages"/>
-        <div className="flex gap-2">
-          <PrimaryButton icon={<MessagesIcon/>} onClick={() => setSelected("popup_2")} fullWidth title="Ask for input"/>
-          <SecondaryButton icon={<MessagesIcon/>} onClick={() => setSelected("popup_1")} fullWidth
-                           title="Popup With Image"/>
-        </div>
-        <div className="flex w-1/2">
-          <PrimaryButton fullWidth indicator="9" icon={<MessagesIcon/>} title="Messages"/>
-        </div>
-        <Breadcrumb>
-          <BreadcrumbItem title="Flows" onClick={() => setSelected("flows")} active={selected === "flows"}
-                          icon={<FilesIcon/>}/>
-          <BreadcrumbItem title="Bits" icon={<FilesIcon/>}/>
-          <BreadcrumbItem title="Mobile" icon={<MessagesIcon/>}/>
-        </Breadcrumb>
-        <InputTypeBox type="text" placeholder="email@gmail.com" title="Email"/>
-        <InputTypeBox type="text" placeholder="email@gmail.com" error="Email is invalid" title="Email"/>
-        <RadioTypeBox title="Give us your soul! Please" id="miaw" value="miaw"/>
-        <SliderItem title="Give us your soul! Please" id="miaw" value="miaw"/>
+  const [bool, setBool] = useState(false);
+  const [bool2, setBool2] = useState(false);
+  const [plan, setPlan] = useState(null);
+  const [pin, setPin] = useState("112");
+  const [password, setPassword] = useState(undefined);
 
-        <SelectTypeBox title="Select your country" defaultValue="eu">
-          <SelectItem text="Romania" value="ro"/>
-          <SelectItem text="Europe" value="eu" checked={true}/>
-          <SelectItem text="China" value="china"/>
-        </SelectTypeBox>
-        <div className="p-2 border border-stone-200 rounded-xl">
-          <SearchableSelectFlow onSelect={(p) => alert(p)}>
-            <SelectFlowDivider name="Basic"/>
-            <SelectFlowItem value="basic_1" title="Basic 1"/>
-            <SelectFlowItem value="basic_2" title="Basic 2"/>
-            <SelectFlowItem title="asdnu" value="miaw?" icon={<FilesIcon/>}/>
-            <SelectFlowDivider name="More"/>
-            <SelectFlowItem title="asdnu" icon={<MessagesIcon/>}/>
-            <SelectFlowDivider name="More"/>
-          </SearchableSelectFlow>
-        </div>
-        <SearchBox/>
-      </div>
+  return (
+    <main className="bg-stone-50 pb-100 overflow-auto w-screen h-screen gap-2 p-10 text-stone-900">
+      <SelectFromListWithSearch title="List Example" onChange={setSelected} selected={selected}
+                                elementList={{id: "1", title: "ok" , id2: "2", title2: "not ok", a: "a", b: "b", c: "c"}}/>
+      <IconSelector title="Emoji"/>
+      <br/>
+      <CheckBox
+        id="a"
+        title="Check me"
+        checked={bool}
+        error="Must select this!"
+        onChange={(e) => setBool(e)}
+      />
+      <br/>
+      <br/>
+      <br/>
+      <Switch
+        id="2"
+        title="Check me 2"
+        checked={bool2}
+        disabled={false}
+        onChange={(e) => setBool2(e)}
+      />
+
+      <Options
+        id="plan"
+        title="Plan"
+        bordered={true}
+        elementList={{ free: "Free", pro: "Pro", team: "Ultimate" }}
+        selected={plan}
+        onChange={setPlan}
+      />
+      <PinBoxInput onChange={setPin} value={pin} error="Wrong code!" length={4} id="test" title="OTP Code"/>
+
+      <br/>
+
+      <br/>
+      <CodeBox code={`public void main() {\nfuck.you();\n}`} title="test.java" language="java"/>
+      <br/>
+      <Tabs defaultId="preview" >
+        <TabItem id="preview" title="Ubuntu 20+">
+          <CodeBox language="bash" code="npm install" prompt={"root@server:~$"} noBackground={true}/>
+          <CodeBox language="bash" code="ls -la" prompt="user@server:~$" noBackground={true}/>
+        </TabItem>
+        <TabItem id="code" title="Arch">
+          <CodeBox language="bash" code="npm install" prompt={"gayest@archbtw:~$"} noBackground={true}/>
+        </TabItem>
+      </Tabs>
+      <br/>
+      <br/>
+      <br/>
     </main>
   );
 }

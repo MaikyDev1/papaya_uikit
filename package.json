@@ -1,5 +1,5 @@
 {
-  "name": "papaya",
+  "name": "papaya-ui",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "version": "0.1.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run build:js && npm run copy:css",
-    "copy:css": "copy /Y src\\theme.css dist\\theme.css",
+    "copy:css": "node -e \"require('fs').copyFileSync('src/theme.css','dist/theme.css')\"",
     "build:js": "tsup",
     "build:css": "npx @tailwindcss/cli -i ./src/theme.css -o ./dist/theme.css --minify",
     "start": "next start"
@@ -19,18 +19,25 @@
     },
     "./theme.css": "./dist/theme.css"
   },
-  "dependencies": {
-    "@toolwind/corner-shape": "^0.0.8-3"
-  },
   "peerDependencies": {
+    "@iconify/react": "^6.0.0",
+    "highlight.js": "^11.0.0",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "sortablejs": "^1.15.0",
+    "tailwindcss": "^4"
   },
   "devDependencies": {
+    "@iconify/react": "^6.0.4",
     "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/postcss": "^4",
+    "highlight.js": "^11.12.0",
+    "next": "^16.4.6",
+    "react": "^19",
+    "react-dom": "^19",
+    "sortablejs": "^1.15.7",
     "tailwindcss": "^4",
-    "tsup": "^8.5.1",
+    "tsup": "^8.2.4",
     "typescript": "^7.0.2"
   }
 }

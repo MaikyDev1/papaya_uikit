@@ -13,3 +13,4 @@ export const colors = {
   rose: "text-rose-800 bg-rose-300",
   stone: "text-stone-800 bg-stone-300",
 };
+// lime, green, emerald, blue, violet, sky, yellow, red, amber, purple, pink, rose, stone

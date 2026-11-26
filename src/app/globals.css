@@ -1,37 +1,9 @@
 @import "tailwindcss";
-@plugin "@toolwind/corner-shape";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #F7971E;
-  --primary-darker: #e88300;
-  --primary-text: #C62828;
-  --secondary: #FBC02D;
-  --secondary-text: #F5F5DC;
-}
+@import "../theme.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-primary: var(--primary);
-  --color-primary-darker: var(--primary-darker);
-  --color-primary-text: var(--primary-text);
-  --color-secondary: var(--secondary);
-  --color-secondary-text: var(--secondary-text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+body { background: var(--background); color: var(--foreground); }
